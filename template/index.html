@@ -1,0 +1,89 @@
+<link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='styles/style.css')}}">
+
+<h1 class="h1-class">Pokédex</h1>
+    <form class="form-class" action="searchPoke" method="POST">
+        <input class="input-class" placeholder="Digite o nome de um Pokémon" name="nome" type="text">
+        <button type="submit" id="btn" name="searchButton">Buscar</button>
+        <h1 class="h1-class">{{index}}</h1>
+        <div class="container">
+            <div id="card">
+                <p class="HP">
+                    <span>HP <label>{{hp}}</label></span>
+                </p>
+                <img src="{{foto}}" alt="">
+                <h2 class="poke-name"><label>{{nome}}</label></h2>
+                <div class="types">
+                    <span><label id="tipo1">{{tipo1}}</label></span>
+                    <span id="ant_tipo2"><label id="tipo2">{{tipo2}}</label></span>
+                </div>
+                
+                
+                <div class="stats">
+                    <p class="attack">
+                        <h3><label>{{attack}}</label></h3>
+                        <p>Attack</p>
+                    </p>
+                    <p class="defense">
+                        <h3><label>{{defense}}</label></h3>
+                        <p>Defense</p>
+                    </p>
+                    <p class="speed">
+                        <h3><label>{{speed}}</label></h3>
+                        <p>Speed</p>
+                    </p>
+                </div>   
+            </div>
+        </div>
+    </form>
+
+<script>
+const typeColor = {
+  bug: "#26de81",
+  dragon: "#ffeaa7",
+  electric: "#fed330",
+  fairy: "#FF0069",
+  fighting: "#30336b",
+  fire: "#f0932b",
+  flying: "#81ecec",
+  grass: "#00b894",
+  ground: "#EFB549",
+  ghost: "#a55eea",
+  ice: "#74b9ff",
+  normal: "#95afc0",
+  poison: "#6c5ce7",
+  psychic: "#a29bfe",
+  rock: "#2d3436",
+  water: "#0190FF",
+};
+const url = " https://pokeapi.co/api/v2/pokemon/";
+const card = document.getElementById("card");
+const btn = document.getElementById("btn");
+
+let styleCard1 = (color) => {
+  card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`;
+  card.querySelectorAll(".types span").forEach((typeColor) => {
+    typeColor.style.backgroundColor = color;
+  });
+};
+
+let styleCard2 = (color2) => {
+  card.style.background = `radial-gradient(circle at 50% 0%, ${color2} 36%, #ffffff 36%)`;
+  card.querySelectorAll(".types span ").forEach((typeColor) => {
+    typeColor.style.backgroundColor = color2;
+  });
+};
+
+const themeColor1 = typeColor[document.getElementById("tipo1").innerHTML];
+const themeColor2 = typeColor[document.getElementById("tipo2").innerHTML];
+
+
+console.log(document.getElementById("tipo2").innerHTML)
+let tip2 = document.getElementById("tipo2").innerHTML;
+if (tip2 == "null"){
+    document.getElementById("ant_tipo2").style.display = "none";  
+}else{
+    styleCard2(themeColor2);
+}
+
+styleCard1(themeColor1);
+</script>
