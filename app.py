@@ -14,7 +14,7 @@ def index():
 @app.route("/searchPoke", methods=["GET","POST"])
 
 def searchPoke():
-    pokemon = Pokemon(request.form["nome"], "","","","","","","","")
+    pokemon = Pokemon(request.form["nome"], "","","","","","","","","","")
     try:
         res = json.loads(requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon.nome}").text)
         #res_id = json.loads(requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon.id}").text)
@@ -49,7 +49,6 @@ def searchPoke():
     speed = pokemon.speed,
     index = pokemon.index
     )
-    ##return pokemon.nome
 if __name__=='__main__':
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config['TESTING'] = True

@@ -1,5 +1,5 @@
 class Pokemon:
-    def __init__(self,nome,foto,tipo1,tipo2, hp, attack,defense,speed, index):
+    def __init__(self,nome,foto,tipo1,tipo2, hp, attack,defense,speed, index, next_index, prev_index):
         self.nome = nome
         self.foto = foto
         self.tipo1 = tipo1
@@ -9,3 +9,5 @@ class Pokemon:
         self.defense = defense
         self.speed = speed
         self.index = index
+        self.next_index = next_index
+        self.prev_index = prev_index

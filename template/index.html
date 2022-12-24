@@ -2,6 +2,7 @@
 
 <h1 class="h1-class">Pokédex</h1>
     <form class="form-class" action="searchPoke" method="POST">
+        <label class="h1-class">Nome ou número:</label>
         <input class="input-class" placeholder="Digite o nome de um Pokémon" name="nome" type="text">
         <button type="submit" id="btn" name="searchButton">Buscar</button>
         <h1 class="h1-class">{{index}}</h1>
@@ -13,7 +14,7 @@
                 <img src="{{foto}}" alt="">
                 <h2 class="poke-name"><label>{{nome}}</label></h2>
                 <div class="types">
-                    <span><label id="tipo1">{{tipo1}}</label></span>
+                    <span id="ant_tipo1"><label id="tipo1">{{tipo1}}</label></span>
                     <span id="ant_tipo2"><label id="tipo2">{{tipo2}}</label></span>
                 </div>
                 
@@ -61,14 +62,14 @@ const btn = document.getElementById("btn");
 
 let styleCard1 = (color) => {
   card.style.background = `radial-gradient(circle at 50% 0%, ${color} 36%, #ffffff 36%)`;
-  card.querySelectorAll(".types span").forEach((typeColor) => {
+  card.querySelectorAll('.types span[id^="ant_tipo1"]').forEach((typeColor) => {
     typeColor.style.backgroundColor = color;
   });
 };
 
 let styleCard2 = (color2) => {
   card.style.background = `radial-gradient(circle at 50% 0%, ${color2} 36%, #ffffff 36%)`;
-  card.querySelectorAll(".types span ").forEach((typeColor) => {
+  card.querySelectorAll('span[id^="ant_tipo2"]').forEach((typeColor) => {
     typeColor.style.backgroundColor = color2;
   });
 };
